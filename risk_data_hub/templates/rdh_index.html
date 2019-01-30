@@ -374,21 +374,22 @@
             });
         });
 
-        //appUrl = jQuery("#nav_risks a").attr("href").replace(/\/$/, "");
-        const appUrl = '/risks/data_extraction';
+        const appUrl = jQuery("#nav_risks a").attr("href").replace(/\/$/, "");
+        //const appUrl = '/risks/data_extraction';
 
         function getUrlPrefix() {
             const adjustedPathname = window.location.pathname.slice(-1) == "/" ? window.location.pathname : window.location.pathname + "/";
             return adjustedPathname.split('/').length > 2 ? '/' + adjustedPathname.split('/')[1] : '';
         }
         
-        function setLocalStorageItem(props = null) {            
+        function setLocalStorageItem(props = null) {              
             const adm_code = props && props.HRpcode || 'EU';             
             const adm_name = props && props.HRname || 'Europe';                          
             const contextUrlPrefix = getUrlPrefix();
             const disasterRisk = {app: {region: adm_code, regionName: adm_name, href: appUrl, geom: appUrl}, requestContext: 'region', contextUrl: contextUrlPrefix, csrfmiddlewaretoken: '{{ csrf_token }}'};                                                      
             localStorage.removeItem("disasteRisk");
             localStorage.setItem("disasterRisk", JSON.stringify(disasterRisk));
+            console.log('local storage', disasterRisk);
         }
 
         //main map
