@@ -39,6 +39,11 @@ class DataContainer extends Component {
         const adjustedValue = value.toString().indexOf('e') > -1 ? value : value+'e'+decimals;        
         return Number(Math.round(adjustedValue)+'e-'+decimals);
     }
+
+    formatDimString(str) {
+        const temp = str.replace('_', ' ');
+        return temp.charAt(0).toUpperCase() + temp.slice(1);
+    }
     
     getRandomColor() {
         const letters = '0123456789ABCDEF';
@@ -186,8 +191,8 @@ class DataContainer extends Component {
                                 </Panel>
                             ) : (
                                 <Panel className="panel-box">   
-                                    <h4 className="text-center">{'Historical Events Chart'}</h4>                             
-                                    <EventCountryChart data={eventDataGroup} uOm={unitOfMeasure} fullContext={fullContext} zoomInOut={zoomInOut} contextUrl={contextUrl}/>
+                                    <h4 className="text-center">{'Historical Events Chart'}</h4>                                    
+                                    <EventCountryChart formatDimString={this.formatDimString.bind(this)} total={data.total_events} data={eventDataGroup} uOm={unitOfMeasure} fullContext={fullContext} zoomInOut={zoomInOut} contextUrl={contextUrl}/>
                                 </Panel>
                             )}
                             
@@ -197,7 +202,7 @@ class DataContainer extends Component {
                             </Panel>
                             <Panel className="panel-box">
                                 <h4 className="text-center">{'Historical Events Chart'}</h4>
-                                <SChart data={eventData} unitOfMeasure={unitOfMeasure} selectEvent={selectEvent} selectedEventIds={selectedEventIds} fullContext={fullContext}/>  
+                                <SChart formatDimString={this.formatDimString.bind(this)} total={data.total_events} values={data.values} data={eventData} unitOfMeasure={unitOfMeasure} selectEvent={selectEvent} selectedEventIds={selectedEventIds} fullContext={fullContext}/>  
                                 <Paginator total={data.total_events} showing={eventData.length} fullContext={fullContext} getAnalysisData={getAnalysis} loading={loading}/>                               
                             </Panel>
                             <Panel className="panel-box">

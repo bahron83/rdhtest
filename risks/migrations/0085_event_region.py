@@ -15,6 +15,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='event',
             name='region',
-            field=models.ForeignKey(default=risks.models.get_default_region, to='risks.Region'),
+            field=models.ForeignKey(to='risks.Region'),
         ),
     ]

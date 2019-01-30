@@ -270,6 +270,212 @@ article.tab-pane {
 }
 /*END OF DRMKC FONT*/
 
+/*RDH FONT*/
+@font-face {
+  font-family: 'rdh';
+  src:  url('../fonts/rdh.eot?x61cmb');
+  src:  url('../fonts/rdh.eot?x61cmb#iefix') format('embedded-opentype'),
+        url('../fonts/rdh.ttf?x61cmb') format('truetype'),
+        url('../fonts/rdh.woff?x61cmb') format('woff'),
+        url('../fonts/rdh.svg?x61cmb#rdh') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {  
+  top: 1px;
+  position: relative;
+  display: inline-block;
+  font-family: 'rdh';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-dowload-arrow:before {
+  content: "\e900";
+}
+.icon-drought:before {
+  content: "\e901";
+}
+.icon-earthquake:before {
+  content: "\e902";
+}
+.icon-extreme-heat:before {
+  content: "\e903";
+}
+.icon-flash-flood:before {
+  content: "\e904";
+}
+.icon-flood:before {
+  content: "\e905";
+}
+.icon-house:before {
+  content: "\e906";
+}
+.icon-landslide:before {
+  content: "\e907";
+}
+.icon-list-arrow:before {
+  content: "\e908";
+}
+.icon-magnifying-glass:before {
+  content: "\e909";
+}
+.icon-nuclear:before {
+  content: "\e90a";
+}
+.icon-oil-spill:before {
+  content: "\e90b";
+}
+.icon-overview:before {
+  content: "\e90c";
+}
+.icon-pin:before {
+  content: "\e90d";
+}
+.icon-Pollution2c:before {
+  content: "\e90e";
+}
+.icon-selector-arrow:before {
+  content: "\e90f";
+}
+.icon-separator:before {
+  content: "\e910";
+}
+.icon-storm-surge:before {
+  content: "\e911";
+}
+.icon-subsidence:before {
+  content: "\e912";
+}
+.icon-tsunami:before {
+  content: "\e913";
+}
+.icon-urban-flood:before {
+  content: "\e914";
+}
+.icon-volcano:before {
+  content: "\e915";
+}
+.icon-water-scarcity:before {
+  content: "\e916";
+}
+.icon-wildfire:before {
+  content: "\e917";
+}
+.icon-cyclone:before {
+  content: "\e918";
+}
+.icon-home3:before {
+  content: "\e919";
+}
+.icon-spinner6:before {
+  content: "\e97f";
+}
+.icon-search:before {
+  content: "\e986";
+}
+.icon-zoom-in:before {
+  content: "\e987";
+}
+.icon-zoom-out:before {
+  content: "\e988";
+}
+/*END OF RDH FONT*/
+
+#site-intro {
+  background: black;
+  opacity: 0.6; 
+  display: flex; 
+  align-items: center;
+}
+
+#site-intro .heading {
+  padding: 0 5rem;
+}
+
+#site-intro img {
+  max-width: 85%;
+}
+
+#hazard-links {
+  background: white;
+  padding: 1rem 0.7rem;
+  color: #666;
+  margin-top: 0;
+}
+
+#hazard-links i {
+  font-size: 4.7rem;
+  border: 2px solid #aaa;
+  border-radius: 4.7rem;
+  padding: 1.3rem;  
+  display: table;
+  margin: 0 auto;
+}
+
+#hazard-links .hazard-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: table;
+  margin: 0 auto;
+  padding-top: 5px;
+}
+
+.home .jumbotron .hazard-link {
+  display: inline-block;
+  margin-right: 1.4rem;
+  color: #555;
+}
+
+.home .jumbotron .last {
+  margin: 0;
+}
+
+.home .jumbotron .inactive {
+  color: #999;
+}
+
+.home .jumbotron .hazard-link:hover {
+  text-decoration: none;
+  color: #2c689c;
+  cursor: pointer;
+}
+
+.home .jumbotron .inactive:hover {
+  text-decoration: none;
+  color: #999;  
+  cursor: default;
+}
+
+.box-risk {
+  background: #2c689c;
+}
+
+.box-event {
+  background: #c4362e;  
+}
+
+.box-country-corner {
+  background: #666;  
+}
+
+.box-home div {  
+  min-height: 300px;
+  padding: 15px;
+  text-align: center;
+  font-size: 130%;
+  color: #eee;
+}
+
 .navbar-right > li > a {
   padding: 8px 15px;
 }
@@ -375,12 +581,15 @@ body.groups li#nav_groups a {
 /* Home
 ----------------------- */
 .home .jumbotron {
-  background: #2c689c;
+  /*background: #2c689c;*/
+  background: url('../img/basemap_fires.jpg');
+  background-position-y: center;
   color: white;
-  padding: 40px 0 60px;
+  /*padding: 40px 0 60px;*/
+  padding: 0 0 40px;
   /*text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);*/
   text-shadow: none;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 .home .jumbotron a {
   /*color: white;*/
@@ -1125,7 +1334,7 @@ footer {
 }
 .slick-slide {
   margin: 0 10px;
-  border: 2px solid #2c689c;
+  /*border: 2px solid #2c689c;*/
 }
 .section {
   margin-top:20px;

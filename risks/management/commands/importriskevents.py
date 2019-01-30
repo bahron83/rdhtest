@@ -155,7 +155,7 @@ class Command(BaseCommand):
                     n_events += 1         
 
                     nuts3_list = event.nuts3.split(';')
-                    nuts2_matches = AdministrativeDivisionMappings.objects.filter(child__pk__in=nuts3_list).distinct()
+                    nuts2_matches = AdministrativeDivisionMappings.objects.filter(child__code__in=nuts3_list).distinct()
                     if nuts2_matches:
                         for nuts2 in nuts2_matches:
                             EventFurtherAdministrativeDivisionAssociation.objects.update_or_create(event=event, f_adm=nuts2)

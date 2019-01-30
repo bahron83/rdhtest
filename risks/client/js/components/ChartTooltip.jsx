@@ -21,7 +21,7 @@ const ChartTooltip = React.createClass({
         const xAxisUnitRev = (skipLabel && label.toLowerCase().includes(skipLabel)) ? '' : xAxisUnit;            
         return active ? (
             <div className="disaster-chart-tooltip">
-                <p className="disaster-chart-tooltip-label">{`${xAxisLabel} : ${!isNaN(label) && parseFloat(label).toLocaleString() || label} ${xAxisUnitRev}`}</p>
+                <p className="disaster-chart-tooltip-label">{`${xAxisLabel} : ${!isNaN(label) && parseFloat(label).toLocaleString() || label} ${xAxisUnitRev}`}</p>                
                 <p className="disaster-chart-tooltip-values">{`${uOm}: ${payload[0].value.toLocaleString()}`}</p>
             </div>) : null;
     }

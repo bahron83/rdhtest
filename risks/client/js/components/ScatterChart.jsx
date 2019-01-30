@@ -1,6 +1,17 @@
 import React, { Component } from 'react';
-import { ScatterChart, Scatter, XAxis, YAxis, Cell, CartesianGrid, Tooltip, Legend } from 'recharts';
-import ChartTooltip from './ChartTooltip';
+import { ScatterChart, Scatter, XAxis, YAxis, Cell, CartesianGrid, Tooltip } from 'recharts';
+import moment from 'moment';
+import SChartTooltip from './SchartTooltip';
+
+
+const CustomizedYLable = (props) => {
+    const {x, y, lab} = props;
+    return (
+        <g className="recharts-cartesian-axis-label">
+        <text x={x} y={y} dy={-10} dx={56} textAnchor="middle" fill="#666" transform="rotate(0)" className="recharts-text">{lab}</text>
+        </g>
+        );
+};
 
 class SChart extends Component {           
     shouldComponentUpdate(nextProps, nextState) {
@@ -15,25 +26,39 @@ class SChart extends Component {
     } 
     
     render () {        
-        const { selectedEventIds, data, unitOfMeasure } = this.props;         
+        const { selectedEventIds, data, unitOfMeasure, total, values, formatDimString } = this.props;         
         if(data.length == 0)
             return null;           
         const dataKey = data[0]['data_key'];
+        const dim1 = values && values[0] && values[0][0] || '';        
+        const dim1Label = formatDimString(dim1);
+        const totals = values && values[0] && values[0][2] || 0;
+        const totalMsg = totals > 0 ? `Total ${dim1Label}: ${totals} ${unitOfMeasure} by ${total} events` : '';
         return (
-          <ScatterChart width={500} height={400} margin={{top: 20, right: 0, bottom: 20, left: 0}}>
-            <XAxis domain={['auto', 'auto']} dataKey={'year'} type="number" name='Year' unit=''/>
-            <YAxis dataKey={dataKey} type="number" name={dataKey} unit={unitOfMeasure}/>
-            <CartesianGrid />
-            <Scatter onClick={this.handleClick.bind(this)} data={data} name='Events'>
-                {data.map((entry, index) => {
-                    const active = selectedEventIds.includes(entry.event_id);
-                    return (
-                        <Cell cursor="pointer" stroke={active ? '#2c689c' : '#ffffff'} strokeWidth={active ? 2 : 1}fill={active ? '#ff8f31' : '#2c689c'} key={`cell-${index}`}/>);
-                })
-                }
-            </Scatter>
-            <Tooltip cursor={{strokeDasharray: '3 3'}}/>
-        </ScatterChart>
+            <span>
+                <p>{totalMsg}</p>
+                <ScatterChart width={500} height={400} margin={{top: 20, right: 0, bottom: 20, left: 0}}>
+                    <XAxis 
+                        dataKey='timestamp'
+                        domain={['auto', 'auto']}
+                        name='Begin Date'
+                        tickFormatter={(unixTime) => moment(unixTime).format('YYYY-MM-DD')}
+                        type="number"
+                    />
+                    <YAxis label={<CustomizedYLable lab={unitOfMeasure}/>} dataKey={dataKey} type="number" name={dataKey} unit={unitOfMeasure}/>
+                    <CartesianGrid />
+                    <Scatter onClick={this.handleClick.bind(this)} data={data} name='Events'>
+                        {data.map((entry, index) => {
+                            const active = selectedEventIds.includes(entry.event_id);
+                            return (
+                                <Cell cursor="pointer" stroke={active ? '#2c689c' : '#ffffff'} strokeWidth={active ? 2 : 1} fill={active ? '#ff8f31' : '#2c689c'} key={`cell-${index}`}/>);
+                        })
+                        }
+                    </Scatter>
+                    <Tooltip content={<SChartTooltip xAxisUnit={unitOfMeasure} />} />
+                </ScatterChart>
+            </span>
+          
       );
     }
     

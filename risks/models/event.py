@@ -1,4 +1,5 @@
 import re
+import time
 from django.db import models
 from geonode.layers.models import Layer
 from risks.models import (HazardType, Region, AdministrativeDivision, RiskAnalysis, RiskApp,
@@ -101,7 +102,8 @@ class Event(RiskAppAware, LocationAware, HazardTypeAware, Exportable, Schedulabl
             'event_source': self.event_source,            
             'cause': self.cause,
             'notes': self.notes,
-            'sources': self.sources
+            'sources': self.sources,
+            'timestamp': int(time.mktime(self.begin_date.timetuple())) * 1000
         }
 
     def href(self):
