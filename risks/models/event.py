@@ -105,7 +105,7 @@ class Event(RiskAppAware, LocationAware, HazardTypeAware, Exportable, Schedulabl
             'cause': self.cause,
             'notes': self.notes,
             'sources': self.sources,
-            'timestamp': int(time.mktime(self.begin_date.timetuple())) * 1000
+            'timestamp': timestamp
         }
 
     def href(self):
