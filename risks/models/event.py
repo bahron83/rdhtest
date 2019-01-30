@@ -85,7 +85,7 @@ class Event(RiskAppAware, LocationAware, HazardTypeAware, Exportable, Schedulabl
         nuts2_adm_divs = self.further_administrative_divisions
         #nuts2_affected_names = AdministrativeDivisionMappings.objects.filter(child__pk__in=nuts3_ids).order_by('name').values_list('name', flat=True).distinct()        
         nuts3_affected_names = nuts3_adm_divs.values_list('name', flat=True)
-        print 'event {} {}'.format(self.event_id, self.begin_date)
+        #print 'event {} {}'.format(self.event_id, self.begin_date)
         timestamp = int(time.mktime(self.begin_date.timetuple())) * 1000 if int(self.year) > 1900 else None
         return {
             'event_id': self.event_id,
