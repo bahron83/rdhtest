@@ -6914,7 +6914,7 @@ a.disaster .label:focus {
 @media (min-width: 1200px) {
   .disaster #disaster-overview-list,
   .disaster .disaster-header {
-    max-width: 670px;
+    max-width: 650px;
   }
 }
 .disaster .nav-pills > li > a {
