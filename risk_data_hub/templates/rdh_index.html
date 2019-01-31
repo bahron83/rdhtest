@@ -388,8 +388,7 @@
             const contextUrlPrefix = getUrlPrefix();
             const disasterRisk = {app: {region: adm_code, regionName: adm_name, href: appUrl, geom: appUrl}, requestContext: 'region', contextUrl: contextUrlPrefix, csrfmiddlewaretoken: '{{ csrf_token }}'};                                                      
             localStorage.removeItem("disasteRisk");
-            localStorage.setItem("disasterRisk", JSON.stringify(disasterRisk));
-            console.log('local storage', disasterRisk);
+            localStorage.setItem("disasterRisk", JSON.stringify(disasterRisk));            
         }
 
         //main map
